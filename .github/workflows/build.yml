@@ -19,6 +19,17 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y bc curl git repo gcc-aarch64-linux-gnu bison flex make zip patch
 
+      - name: Add SSH key
+        env:
+            SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+            mkdir -p /home/runner/.ssh
+            ssh-keyscan ssh.gitlab.hentaios.com >> /home/runner/.ssh/known_hosts
+            echo "${{ secrets.GITLAB_SSH_KEY }}" > /home/runner/.ssh/github_actions
+            chmod 600 /home/runner/.ssh/github_actions
+            ssh-agent -a $SSH_AUTH_SOCK > /dev/null	
+            ssh-add /home/runner/.ssh/github_actions
+
       - name: Run Kernel Build Script
         run: |
           chmod +x build_kernel.sh
