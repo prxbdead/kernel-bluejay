@@ -64,6 +64,8 @@ echo "CONFIG_KSU_SUSFS_SPOOF_CMDLINE_OR_BOOTCONFIG=y" >> ./aosp/arch/arm64/confi
 echo "CONFIG_KSU_SUSFS_OPEN_REDIRECT=y" >> ./aosp/arch/arm64/configs/gki_defconfig
 echo "CONFIG_KSU_SUSFS_SUS_SU=y" >> ./aosp/arch/arm64/configs/gki_defconfig
 
+sed -i '2s/check_defconfig//' ./aosp/build.config.gki
+
 exec tools/bazel run \
     --lto=thin \
     --config=stamp \
