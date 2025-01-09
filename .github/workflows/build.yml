@@ -32,6 +32,7 @@ jobs:
           mkdir -p ~/.ssh
           echo '${{ secrets.GITLAB_SSH_KEY }}' > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
+          ssh-keygen -R ssh.gitlab.hentaios.com
 
       - name: Run Kernel Build Script
         run: |
