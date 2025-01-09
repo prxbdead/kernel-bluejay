@@ -14,21 +14,28 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      - name: Cache Dependencies
+        uses: actions/cache@v3
+        with:
+          path: /var/cache/apt
+          key: ${{ runner.os }}-apt-cache
+          restore-keys: |
+            ${{ runner.os }}-apt-cache
+
       - name: Set Up Environment
         run: |
           sudo apt-get update
           sudo apt-get install -y bc curl git repo gcc-aarch64-linux-gnu bison flex make zip patch
 
-      - name: Add SSH key
-        env:
-            SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      - name: Add SSH Key
         run: |
-            mkdir -p /home/runner/.ssh
-            ssh-keyscan ssh.gitlab.hentaios.com >> /home/runner/.ssh/known_hosts
-            echo "${{ secrets.GITLAB_SSH_KEY }}" > /home/runner/.ssh/github_actions
-            chmod 600 /home/runner/.ssh/github_actions
-            ssh-agent -a $SSH_AUTH_SOCK > /dev/null	
-            ssh-add /home/runner/.ssh/github_actions
+          mkdir -p ~/.ssh
+          echo '${{ secrets.GITLAB_SSH_KEY }}' > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+      - name: Test SSH Connection
+        run: |
+          ssh -v -o StrictHostKeyChecking=no -p 2052 git@ssh.gitlab.hentaios.com || { echo "SSH connection test failed"; exit 1; }
 
       - name: Run Kernel Build Script
         run: |
