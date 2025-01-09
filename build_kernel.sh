@@ -15,12 +15,12 @@ fi
 
 cd ./builds
 
-mkdir kernel
-cd ./kernel
-
 git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "gki-android14-6.1"
 
 # git clone https://github.com/TheWildJames/kernel_patches.git
+
+mkdir kernel
+cd ./kernel
 
 repo init --depth=1 -u https://android.googlesource.com/kernel/manifest -b android-gs-bluejay-6.1-android16-dp
 repo --trace sync -c -j$(nproc --all) --no-tags --fail-fast
@@ -63,7 +63,6 @@ echo "CONFIG_KSU_SUSFS_HIDE_KSU_SUSFS_SYMBOLS=y" >> ./aosp/arch/arm64/configs/gk
 echo "CONFIG_KSU_SUSFS_SPOOF_CMDLINE_OR_BOOTCONFIG=y" >> ./aosp/arch/arm64/configs/gki_defconfig
 echo "CONFIG_KSU_SUSFS_OPEN_REDIRECT=y" >> ./aosp/arch/arm64/configs/gki_defconfig
 echo "CONFIG_KSU_SUSFS_SUS_SU=y" >> ./aosp/arch/arm64/configs/gki_defconfig
-
 
 exec tools/bazel run \
     --lto=thin \
