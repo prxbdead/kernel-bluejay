@@ -70,6 +70,6 @@ rm -rf ./aosp/android/abi_gki_protected_exports_x86_64
 
 exec tools/bazel run \
     --lto=thin \
-    --config=stamp \
+    --config=fast \
     --config=bluejay \
     //private/devices/google/bluejay:gs101_bluejay_dist "$@"
