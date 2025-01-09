@@ -65,6 +65,8 @@ echo "CONFIG_KSU_SUSFS_OPEN_REDIRECT=y" >> ./aosp/arch/arm64/configs/gki_defconf
 echo "CONFIG_KSU_SUSFS_SUS_SU=y" >> ./aosp/arch/arm64/configs/gki_defconfig
 
 sed -i '2s/check_defconfig//' ./aosp/build.config.gki
+rm -rf ./aosp/android/abi_gki_protected_exports_aarch64
+rm -rf ./aosp/android/abi_gki_protected_exports_x86_64
 
 exec tools/bazel run \
     --lto=thin \
