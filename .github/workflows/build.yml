@@ -25,7 +25,7 @@ jobs:
       - name: Set Up Environment
         run: |
           sudo apt-get update
-          sudo apt-get install -y bc curl git repo gcc-aarch64-linux-gnu bison flex make zip patch
+          sudo apt-get install -y bc curl git repo gcc-aarch64-linux-gnu bison flex make zip unzip patch
 
       - name: Add SSH Key
         run: |
@@ -33,13 +33,9 @@ jobs:
           echo '${{ secrets.GITLAB_SSH_KEY }}' > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
 
-      - name: Test SSH Connection
-        run: |
-          ssh -v -o StrictHostKeyChecking=no -p 2052 git@ssh.gitlab.hentaios.com || { echo "SSH connection test failed"; exit 1; }
-
       - name: Run Kernel Build Script
         run: |
-          chmod +x build_kernel.sh
+          chmod 755 build_kernel.sh
           ./build_kernel.sh
 
       - name: Upload Kernel Artifacts
