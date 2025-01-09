@@ -1,0 +1,33 @@
+name: Build Kernel with KernelSU & SUSFS
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set Up Environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bc curl git repo gcc-aarch64-linux-gnu bison flex make zip patch
+
+      - name: Run Kernel Build Script
+        run: |
+          chmod +x build_kernel.sh
+          ./build_kernel.sh
+
+      - name: Upload Kernel Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: built-kernel
+          path: |
+            ./builds/**/*.img
+            ./builds/**/*.zip
