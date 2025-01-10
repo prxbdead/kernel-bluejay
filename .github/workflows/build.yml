@@ -26,6 +26,11 @@ jobs:
           git clone https://android.googlesource.com/platform/system/tools/mkbootimg
           echo "MKBOOTIMG_DIR=$(pwd)/mkbootimg" >> $GITHUB_ENV
 
+      - name: Download Bazel
+        run: |
+          curl -L https://github.com/bazelbuild/bazel/releases/download/8.0.0/bazel-8.0.0-linux-x86_64 --output bazel
+          echo "BAZEL_DIR=$(pwd)/bazel" >> $GITHUB_ENV
+
       - name: Install Python dependencies
         run: |
           sudo apt update
@@ -46,6 +51,7 @@ jobs:
 
       - name: Run Kernel Build Script
         run: |
+          source $GITHUB_ENV
           chmod 755 build_kernel.sh
           ./build_kernel.sh
 
