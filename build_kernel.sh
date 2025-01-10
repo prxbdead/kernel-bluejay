@@ -60,6 +60,6 @@ exec tools/bazel run \
     --kernel_package=@//aosp \
     --lto=thin \
     --config=fast \
-    --config=bluejay \
+    --config=raviole \
     --verbose_failures \
     //private/devices/google/raviole:gs101_raviole_dist "$@"

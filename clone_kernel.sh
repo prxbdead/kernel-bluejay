@@ -20,7 +20,7 @@ echo "Repo initialized successfully!"
 # Print repo version
 repo --version
 
-# Uncomment if SSH is required
+# Start the ssh-agent and add the SSH key
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_ed25519
 
