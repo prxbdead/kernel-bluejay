@@ -68,8 +68,6 @@ repo --trace sync -c -j$(nproc --all) --no-tags --fail-fast
 rm -rf ./aosp/android/abi_gki_protected_exports_aarch64
 rm -rf ./aosp/android/abi_gki_protected_exports_x86_64
 
-ln -s $BAZEL_DIR tools/bazel
-
 exec tools/bazel run \
     --lto=thin \
     --config=fast \
