@@ -2,8 +2,8 @@
 
 set -e
 
-mkdir -p ./build/kernel
-cd ./build/kernel
+mkdir -p ./builds/kernel
+cd ./builds/kernel
 
 repo init --depth=1 -u https://gitlab.hentaios.com/hentaios-gs-6.x/manifest -b Vallhound
 echo "Repo initialized successfully!"

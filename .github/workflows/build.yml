@@ -47,7 +47,7 @@ jobs:
       - name: Cache Kernel Source
         uses: actions/cache@v3
         with:
-          path: ./build/kernel
+          path: ./builds/kernel
           if: always()
           key: ${{ runner.OS }}-kernel-cache
           restore-keys: |
