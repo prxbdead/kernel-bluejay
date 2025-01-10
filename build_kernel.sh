@@ -44,7 +44,7 @@ repo --trace sync -c -j$(nproc --all) --no-tags --fail-fast
 #cp ../../kernel_patches/69_hide_stuff.patch ./
 #patch -p1 -F 3 < 69_hide_stuff.patch
 
-cd ..
+#cd ..
 
 #echo "CONFIG_KSU=y" >> ./aosp/arch/arm64/configs/gki_defconfig
 #echo "CONFIG_KSU_SUSFS=y" >> ./aosp/arch/arm64/configs/gki_defconfig
@@ -67,8 +67,7 @@ cd ..
 #sed -i '2s/check_defconfig//' ./aosp/build.config.gki
 rm -rf ./aosp/android/abi_gki_protected_exports_aarch64
 rm -rf ./aosp/android/abi_gki_protected_exports_x86_64
-pwd
-mkdir tools
+
 ln -s $BAZEL_DIR tools/bazel
 
 exec tools/bazel run \
