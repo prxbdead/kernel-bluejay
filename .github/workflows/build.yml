@@ -35,7 +35,7 @@ jobs:
       - name: Verify mkbootimg.py
         run: |
           source $GITHUB_ENV
-          python3 $MKBOOTIMG_DIR/mkbootimg.py --help || echo "mkbootimg.py is ready for use"
+          python3 $MKBOOTIMG_DIR/mkbootimg.py --help > /dev/null || echo "mkbootimg.py is ready for use"
 
       - name: Add SSH Key
         run: |
