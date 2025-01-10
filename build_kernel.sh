@@ -67,7 +67,8 @@ cd ..
 #sed -i '2s/check_defconfig//' ./aosp/build.config.gki
 rm -rf ./aosp/android/abi_gki_protected_exports_aarch64
 rm -rf ./aosp/android/abi_gki_protected_exports_x86_64
-
+pwd
+mkdir tools
 ln -s $BAZEL_DIR tools/bazel
 
 exec tools/bazel run \
