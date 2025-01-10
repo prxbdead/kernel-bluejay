@@ -44,10 +44,23 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh -o StrictHostKeyChecking=no git@ssh.gitlab.hentaios.com -p 2052
 
-      - name: Run Kernel Build Script
+      - name: Cache Kernel Source
+        uses: actions/cache@v3
+        with:
+          path: ./build/kernel
+          key: ${{ runner.OS }}-kernel-cache
+          restore-keys: |
+            ${{ runner.OS }}-kernel-cache
+
+
+      - name: Clone Kernel Source
         run: |
-          source $GITHUB_ENV
-          chmod 755 build_kernel.sh
+          chmod 755 ./clone_kernel.sh
+          ./clone_kernel.sh
+
+      - name: Build Kernel
+        run: |
+          chmod 755 ./build_kernel.sh
           ./build_kernel.sh
 
       - name: Upload Kernel Artifacts

@@ -3,27 +3,13 @@
 set -e
 
 
-# Check if 'builds' folder exists, create it if not
-if [ ! -d "./builds" ]; then
-    echo "'builds' folder not found. Creating it..."
-    mkdir -p ./builds
-else
-    echo "'builds' folder already exists removing it."
-    rm -rf ./builds
-    mkdir -p ./builds
-fi
-
 cd ./builds
 
 #git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "gki-android14-6.1"
 
-# git clone https://github.com/TheWildJames/kernel_patches.git
+#git clone https://github.com/TheWildJames/kernel_patches.git
 
-mkdir kernel
 cd ./kernel
-
-repo init --depth=1 -u https://gitlab.hentaios.com/hentaios-gs-6.x/manifest -b Vallhound
-repo --trace sync -c -j$(nproc --all) --no-tags --fail-fast
 
 #cd ./aosp
 #curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -
