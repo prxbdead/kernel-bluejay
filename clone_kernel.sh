@@ -9,5 +9,5 @@ repo init --depth=1 -u https://gitlab.hentaios.com/hentaios-gs-6.x/manifest.git/
 echo "Repo initialized successfully!"
 repo --version
 echo "Begin repo sync..."
-repo --trace sync -c -j$(nproc --all) --no-tags --fail-fast -v
+repo --trace sync -c --no-tags --fail-fast
 echo "Repo sync done!"

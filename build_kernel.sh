@@ -9,7 +9,9 @@ git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "gki-android14-6.1"
 
 git clone https://github.com/TheWildJames/kernel_patches.git
 
-cd ./kernel
+cp -r ./kernel ./kernel-copy
+
+cd ./kernel-copy
 
 cd ./aosp
 curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -
