@@ -68,7 +68,7 @@ cd ..
 rm -rf ./aosp/android/abi_gki_protected_exports_aarch64
 rm -rf ./aosp/android/abi_gki_protected_exports_x86_64
 
-curl -o ./tools/bazel https://github.com/bazelbuild/bazel/releases/download/8.0.0/bazel-8.0.0-linux-x86_64
+curl -o tools/bazel https://github.com/bazelbuild/bazel/releases/download/8.0.0/bazel-8.0.0-linux-x86_64
 
 exec tools/bazel run \
     --lto=thin \

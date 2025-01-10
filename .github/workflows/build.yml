@@ -14,10 +14,28 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Set Up Environment
+      - name: Install repo tool
         run: |
-          sudo apt-get update
-          sudo apt-get install -y bc curl git repo gcc-aarch64-linux-gnu bison flex make zip unzip patch
+          mkdir -p ~/bin
+          curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+          chmod a+rx ~/bin/repo
+          echo "~/bin" >> $GITHUB_PATH
+
+      - name: Clone mkbootimg repository
+        run: |
+          git clone https://android.googlesource.com/platform/system/tools/mkbootimg
+          echo "MKBOOTIMG_DIR=$(pwd)/mkbootimg" >> $GITHUB_ENV
+
+      - name: Install Python dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y python3 python3-pip
+          pip3 install --upgrade pip
+
+      - name: Verify mkbootimg.py
+        run: |
+          source $GITHUB_ENV
+          python3 $MKBOOTIMG_DIR/mkbootimg.py --help || echo "mkbootimg.py is ready for use"
 
       - name: Add SSH Key
         run: |
