@@ -72,4 +72,5 @@ exec tools/bazel run \
     --lto=thin \
     --config=fast \
     --config=bluejay \
+    --verbose_failures \
     //private/devices/google/bluejay:gs101_bluejay_dist "$@"
