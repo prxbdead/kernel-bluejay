@@ -55,8 +55,7 @@ cd ./kernel
 #rm -rf ./aosp/android/abi_gki_protected_exports_x86_64
 
 exec tools/bazel run \
-    --lto=thin \
-    --config=fast \
-    --config=bluejay \
-    --verbose_failures \
-    //private/devices/google/bluejay:gs101_bluejay_dist "$@"
+    --kernel_package=@//aosp \
+    --config=stamp \
+    --config=raviole \
+    //private/devices/google/raviole:gs101_raviole_dist "$@"
