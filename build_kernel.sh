@@ -3,7 +3,7 @@
 set -e
 
 cd ./builds
-git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "kernel-5.4"
+git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "gki-android14-6.1"
 git clone https://github.com/TheWildJames/kernel_patches.git
 
 cp -r ./kernel ./kernel-copy
@@ -12,12 +12,12 @@ cp -r ./kernel ./kernel-copy
 cd ./kernel-copy/aosp
 curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -
 
-#cd ./KernelSU-Next/kernel
-#sed -i 's/ccflags-y += -DKSU_VERSION=16/ccflags-y += -DKSU_VERSION=12000/' ./Makefile
-#cd ../../
+cd ./KernelSU-Next/kernel
+sed -i 's/ccflags-y += -DKSU_VERSION=16/ccflags-y += -DKSU_VERSION=12000/' ./Makefile
+cd ../../
 
 cp ../../susfs4ksu/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch ./KernelSU-Next/
-cp ../../susfs4ksu/kernel_patches/50_add_susfs_in_kernel-5.4.patch ./
+cp ../../susfs4ksu/kernel_patches/50_add_susfs_in_gki-android14-6.1.patch ./
 cp ../../susfs4ksu/kernel_patches/fs/* ./fs/
 cp ../../susfs4ksu/kernel_patches/include/linux/* ./include/linux/
 
@@ -26,7 +26,7 @@ cd ./KernelSU-Next
 patch -p1 --forward < 10_enable_susfs_for_ksu.patch || true
 
 cd ../
-patch -p1 < 50_add_susfs_in_kernel-5.4.patch || true
+patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch || true
 
 cp ../../kernel_patches/69_hide_stuff.patch ./
 patch -p1 -F 3 < 69_hide_stuff.patch
