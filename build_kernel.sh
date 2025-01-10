@@ -12,6 +12,7 @@ cp -r ./kernel ./kernel-copy
 cd ./kernel-copy/aosp
 curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -
 
+<<comment
 cd ./KernelSU-Next/kernel
 sed -i 's/ccflags-y += -DKSU_VERSION=16/ccflags-y += -DKSU_VERSION=12000/' ./Makefile
 cd ../../
@@ -30,9 +31,11 @@ patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch || true
 
 cp ../../kernel_patches/69_hide_stuff.patch ./
 patch -p1 -F 3 < 69_hide_stuff.patch
+comment
+cd .. 
 
-cd ..
 
+<<comment
 echo "CONFIG_KSU=y" >> ./aosp/arch/arm64/configs/gki_defconfig
 echo "CONFIG_KSU_SUSFS=y" >> ./aosp/arch/arm64/configs/gki_defconfig
 echo "CONFIG_KSU_SUSFS_HAS_MAGIC_MOUNT=y" >> ./aosp/arch/arm64/configs/gki_defconfig
@@ -52,6 +55,8 @@ echo "CONFIG_KSU_SUSFS_OPEN_REDIRECT=y" >> ./aosp/arch/arm64/configs/gki_defconf
 echo "CONFIG_KSU_SUSFS_SUS_SU=y" >> ./aosp/arch/arm64/configs/gki_defconfig
 
 sed -i '2s/check_defconfig//' ./aosp/build.config.gki
+comment
+
 rm -rf ./aosp/android/abi_gki_protected_exports_aarch64
 rm -rf ./aosp/android/abi_gki_protected_exports_x86_64
 
