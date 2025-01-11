@@ -8,12 +8,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Maximize build space
         uses: easimon/maximize-build-space@master
         with:
+          swap-size-mb: 4192
           remove-dotnet: 'true'
           remove-android: 'true'
           remove-haskell: 'true'
