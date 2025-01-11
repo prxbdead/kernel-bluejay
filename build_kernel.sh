@@ -6,10 +6,8 @@ cd ./builds
 git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "gki-android14-6.1"
 git clone https://github.com/TheWildJames/kernel_patches.git
 
-cp -r ./kernel ./kernel-copy
-
 # Install KernelSU-Next
-cd ./kernel-copy/aosp
+cd ./kernel/aosp
 curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -
 
 cd ./KernelSU-Next/kernel

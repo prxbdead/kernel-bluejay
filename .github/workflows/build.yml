@@ -44,16 +44,6 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh -o StrictHostKeyChecking=no git@ssh.gitlab.hentaios.com -p 2052
 
-      - name: Cache Kernel Source
-        uses: actions/cache@v3
-        with:
-          path: ./builds/kernel
-          if: always()
-          key: ${{ runner.OS }}-kernel-cache
-          restore-keys: |
-            ${{ runner.OS }}-kernel-cache
-
-
       - name: Clone Kernel Source
         run: |
           chmod 755 ./clone_kernel.sh
