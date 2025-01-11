@@ -20,7 +20,7 @@ jobs:
 
           echo "Step 2: Set up SSH for HentaiOS GitLab"
           mkdir -p ~/.ssh
-          echo "$GITLAB_SSH_KEY" > ~/.ssh/id_ed25519
+          echo -e "$GITLAB_SSH_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/id_ed25519
