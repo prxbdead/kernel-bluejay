@@ -14,8 +14,6 @@ jobs:
       - name: Maximize build space
         uses: easimon/maximize-build-space@master
         with:
-          root-reserve-mb: 8192
-          temp-reserve-mb: 2048
           remove-dotnet: 'true'
           remove-android: 'true'
           remove-haskell: 'true'
@@ -99,6 +97,9 @@ jobs:
           echo "CONFIG_KSU_SUSFS_OPEN_REDIRECT=y" >> ./arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS_SUS_SU=y" >> ./arch/arm64/configs/gki_defconfig
 
+          rm -rf ./common/android/abi_gki_protected_exports_aarch64
+          rm -rf ./common/android/abi_gki_protected_exports_x86_64
+          
           sed -i '2s/check_defconfig//' ./build.config.gki
 
       - name: Build Kernel For Raviole
