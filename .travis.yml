@@ -37,7 +37,7 @@ jobs:
           curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -
 
           echo "Step 5: Apply SUSFS patches"
-          cd ..
+          cd ../..
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "gki-android14-6.1"
           cp susfs4ksu/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch ./kernel/aosp/KernelSU-Next/
           cp susfs4ksu/kernel_patches/50_add_susfs_in_gki-android14-6.1.patch ./kernel/aosp/
@@ -49,7 +49,7 @@ jobs:
           patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch || true
 
           echo "Step 6: Add TheWildJames's patches"
-          cd ..
+          cd ../..
           git clone https://github.com/TheWildJames/kernel_patches.git
           cp kernel_patches/apk_sign.c_fix.patch ./kernel/aosp/
           cp kernel_patches/core_hook.c_fix.patch ./kernel/aosp/
