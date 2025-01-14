@@ -49,8 +49,10 @@ jobs:
       - name: Apply KernelSU-Next patches
         run: |
           cd ./builds/kernel/aosp
-          curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -s next-susfs-5.4
-
+          git clone https://raw.githubusercontent.com/rifsxd/KernelSU-Next -b next-susfs-5.4
+          chmod 755 ./KernelSU-Next/kernel/setup.sh
+          ./KernelSU-Next/kernel/setup.sh
+          
           #cd ./KernelSU-Next/kernel
           #sed -i 's/ccflags-y += -DKSU_VERSION=16/ccflags-y += -DKSU_VERSION=12264/' ./Makefile
     
