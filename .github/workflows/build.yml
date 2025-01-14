@@ -112,7 +112,7 @@ jobs:
           cd ./builds/kernel
           exec tools/bazel run \
               --kernel_package=@//aosp \
-              --lto=full \
+              --lto=thin \
               --config=raviole \
               --verbose_failures \
               //private/devices/google/raviole:gs101_raviole_dist "$@"
