@@ -49,10 +49,9 @@ jobs:
       - name: Apply KernelSU-Next patches
         run: |
           cd ./builds/kernel/aosp
-          git clone https://github.com/rifsxd/KernelSU-Next.git -b next-susfs-5.4
-          chmod 755 ./KernelSU-Next/kernel/setup.sh
-          ./KernelSU-Next/kernel/setup.sh
-          
+          #git clone -b next-susfs-5.4 https://github.com/rifsxd/KernelSU-Next.git
+          curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -s next-susfs-5.4
+
           cd ./KernelSU-Next
           version=$(expr 10000 + $(git rev-list --count HEAD) + 200)
           echo "KernelSU-Next version: $version"
