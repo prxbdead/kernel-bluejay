@@ -49,7 +49,7 @@ jobs:
       - name: Apply KernelSU-Next patches
         run: |
           cd ./builds/kernel/aosp
-          #git clone -b next-susfs-5.4 https://github.com/rifsxd/KernelSU-Next.git
+          git clone -b next-susfs-5.4 https://github.com/rifsxd/KernelSU-Next.git
           curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -s next-susfs-5.4
 
           cd ./KernelSU-Next
