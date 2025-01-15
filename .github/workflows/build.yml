@@ -61,8 +61,8 @@ jobs:
           cd ./builds
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "gki-android14-6.1"
           
-          #cp ./susfs4ksu/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch ./kernel/aosp/KernelSU-Next/
-          #cp ./susfs4ksu/kernel_patches/50_add_susfs_in_gki-android14-6.1.patch ./kernel/aosp/
+          cp ./susfs4ksu/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch ./kernel/aosp/KernelSU-Next/
+          cp ./susfs4ksu/kernel_patches/50_add_susfs_in_gki-android14-6.1.patch ./kernel/aosp/
           cp ./susfs4ksu/kernel_patches/fs/* ./kernel/aosp/fs/
           cp ./susfs4ksu/kernel_patches/include/linux/* ./kernel/aosp/include/linux/
           cd ./kernel/aosp/KernelSU-Next
