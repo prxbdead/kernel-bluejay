@@ -54,6 +54,7 @@ jobs:
           chmod 755 ./setup.sh
           
           version=$(expr 10000 + $(git rev-list --count HEAD) + 200)
+          echo "KernelSU-Next version: $version"
           sed -i "s/ccflags-y += -DKSU_VERSION=16/ccflags-y += -DKSU_VERSION=$version/" ./Makefile
 
           cd ../..
