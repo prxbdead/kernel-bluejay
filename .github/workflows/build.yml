@@ -50,7 +50,7 @@ jobs:
         run: |
           cd ./builds/kernel/aosp
           git clone https://github.com/rifsxd/KernelSU-Next.git -b next-susfs-5.4
-          chmod 755 ./KernelSU-Next/next/kernel/setup.sh
+          chmod 755 ./KernelSU-Next/kernel/setup.sh
           ./KernelSU-Next/next/kernel/setup.sh
           
           cd ./KernelSU-Next
