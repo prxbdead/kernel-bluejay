@@ -51,7 +51,7 @@ jobs:
           cd ./builds/kernel/aosp
           git clone https://github.com/rifsxd/KernelSU-Next.git -b next-susfs-5.4
           chmod 755 ./KernelSU-Next/kernel/setup.sh
-          ./KernelSU-Next/next/kernel/setup.sh
+          ./KernelSU-Next/kernel/setup.sh
           
           cd ./KernelSU-Next
           version=$(expr 10000 + $(git rev-list --count HEAD) + 200)
