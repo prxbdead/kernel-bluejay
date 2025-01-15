@@ -56,6 +56,7 @@ jobs:
           version=$(expr 10000 + $(git rev-list --count HEAD) + 200)
           sed -i "s/ccflags-y += -DKSU_VERSION=16/ccflags-y += -DKSU_VERSION=$version/" ./Makefile
 
+          cd ../..
           ./KernelSU-Next/kernel/setup.sh
 
       - name: Build Kernel For Raviole
