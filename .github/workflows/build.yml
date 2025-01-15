@@ -65,20 +65,20 @@ jobs:
           #cp ./susfs4ksu/kernel_patches/50_add_susfs_in_gki-android14-6.1.patch ./kernel/aosp/
           cp ./susfs4ksu/kernel_patches/fs/* ./kernel/aosp/fs/
           cp ./susfs4ksu/kernel_patches/include/linux/* ./kernel/aosp/include/linux/
-          #cd ./kernel/aosp/KernelSU-Next
-          #patch -p1 --forward < 10_enable_susfs_for_ksu.patch || true
-          #cd ../
-          #patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch || true
+          cd ./kernel/aosp/KernelSU-Next
+          patch -p1 --forward < 10_enable_susfs_for_ksu.patch || true
+          cd ../
+          patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch || true
 
       - name: Add TheWildJames's patches
         run: |
           cd ./builds
           git clone https://github.com/TheWildJames/kernel_patches.git
-          #cp ./kernel_patches/core_hook.c_fix.patch ./kernel/aosp/
+          cp ./kernel_patches/core_hook.c_fix.patch ./kernel/aosp/
           cp ./kernel_patches/selinux.c_fix.patch ./kernel/aosp/
           cd ./kernel/aosp
-          #patch -p1 -F 3 < ./core_hook.c_fix.patch
-          patch -p1 -F 3 < ./selinux.c_fix.patch
+          patch -p1 -F 3 < ./core_hook.c_fix.patch || true
+          patch -p1 -F 3 < ./selinux.c_fix.patch || true
 
       - name: Build Kernel For Raviole
         run: |
