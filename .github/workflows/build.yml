@@ -49,16 +49,13 @@ jobs:
       - name: Apply KernelSU-Next patches
         run: |
           cd ./builds/kernel/aosp
-          git clone https://github.com/rifsxd/KernelSU-Next.git -b next-susfs-5.4
-          cd ./KernelSU-Next/kernel
-          chmod 755 ./setup.sh
+          curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -s next-susfs-5.4
           
+          cd ./KernelSU-Next
           version=$(expr 10000 + $(git rev-list --count HEAD) + 200)
           echo "KernelSU-Next version: $version"
           sed -i "s/ccflags-y += -DKSU_VERSION=.*/ccflags-y += -DKSU_VERSION=$version/" ./Makefile
 
-          cd ../../
-          ./KernelSU-Next/kernel/setup.sh
 
       - name: Build Kernel For Raviole
         run: |
