@@ -61,14 +61,14 @@ jobs:
           cd ./builds
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "kernel-5.4"
           
-          cp ./susfs4ksu/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch ./kernel/aosp/KernelSU-Next/
-          cp ./susfs4ksu/kernel_patches/50_add_susfs_in_kernel-5.4.patch ./kernel/aosp/
+          #cp ./susfs4ksu/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch ./kernel/aosp/KernelSU-Next/
+          #cp ./susfs4ksu/kernel_patches/50_add_susfs_in_kernel-5.4.patch ./kernel/aosp/
           cp ./susfs4ksu/kernel_patches/fs/* ./kernel/aosp/fs/
           cp ./susfs4ksu/kernel_patches/include/linux/* ./kernel/aosp/include/linux/
-          cd ./kernel/aosp/KernelSU-Next
-          patch -p1 --forward < 10_enable_susfs_for_ksu.patch || true
-          cd ../
-          patch -p1 < 50_add_susfs_in_kernel-5.4.patch || true
+          #cd ./kernel/aosp/KernelSU-Next
+          #patch -p1 --forward < 10_enable_susfs_for_ksu.patch || true
+          #cd ../
+          #patch -p1 < 50_add_susfs_in_kernel-5.4.patch || true
 
 
       - name: Build Kernel For Raviole
