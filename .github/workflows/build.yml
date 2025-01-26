@@ -120,9 +120,8 @@ jobs:
               --verbose_failures \
               --lto=full \
               --config=stamp \
-              --config=bluejay \
-              //private/devices/google/bluejay:gs101_bluejay_dist "$@"
-
+              --config=raviole \
+              //private/devices/google/raviole:gs101_raviole_dist "$@"
 
       - uses: actions/upload-artifact@v4
         with:
