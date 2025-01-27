@@ -70,17 +70,11 @@ jobs:
           cd ../
           patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch || true
 
-      - name: Add TheWildJames's patches
+      - name: Add sidex's patches
         run: |
-          cd ./builds
-          git clone https://github.com/TheWildJames/kernel_patches.git
-          cp ./kernel_patches/apk_sign.c_fix.patch ./kernel/aosp/
-          cp ./kernel_patches/core_hook.c_fix.patch ./kernel/aosp/
-          cp ./kernel_patches/selinux.c_fix.patch ./kernel/aosp/
-          cd ./kernel/aosp
-          patch -p1 -F 3 < apk_sign.c_fix.patch
-          patch -p1 -F 3 < ./core_hook.c_fix.patch
-          patch -p1 -F 3 < ./selinux.c_fix.patch
+          cp Implement-SUSFS-v1.5.4-for-KernelSU-Next.patch ./builds/kernel/aosp/
+          cd ./builds/kernel/aosp
+          patch -p1 -F 3 < Implement-SUSFS-v1.5.4-for-KernelSU-Next.patch
 
       - name: Set KernelSU and SUSFS config
         run: |
