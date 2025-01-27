@@ -75,9 +75,9 @@ jobs:
 
       - name: Add sidex's patches
         run: |
-          cp Implement-SUSFS-v1.5.4-for-KernelSU-Next.patch ./builds/kernel/aosp/kernel
-          cd ./builds/kernel/aosp/kernel
-          patch -p1 -F 3 < Implement-SUSFS-v1.5.4-for-KernelSU-Next.patch
+          cp Implement-SUSFS-v1.5.4-for-KernelSU-Next.patch ./builds/kernel/aosp
+          cd ./builds/kernel/aosp
+          patch -p1 < Implement-SUSFS-v1.5.4-for-KernelSU-Next.patch
 
       - name: Set KernelSU and SUSFS config
         run: |
