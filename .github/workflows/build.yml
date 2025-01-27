@@ -77,7 +77,7 @@ jobs:
         run: |
           cp Implement-SUSFS-v1.5.4-for-KernelSU-Next.patch ./builds/kernel/aosp
           cd ./builds/kernel/aosp
-          patch -p1 < Implement-SUSFS-v1.5.4-for-KernelSU-Next.patch
+          patch < Implement-SUSFS-v1.5.4-for-KernelSU-Next.patch
 
       - name: Set KernelSU and SUSFS config
         run: |
