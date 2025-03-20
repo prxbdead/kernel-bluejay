@@ -52,7 +52,7 @@ jobs:
       - name: Apply KernelSU-Next patches
         run: |
           cd ./builds/kernel/aosp
-          curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next-susfs/kernel/setup.sh" | bash -s next-susfs
+          curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next-susfs/kernel/setup.sh" | bash -s next-susfs-dev
           cd ./KernelSU-Next
           
           version=$(expr 10000 + $(git rev-list --count HEAD) + 200)
@@ -71,7 +71,7 @@ jobs:
           cd ./kernel/aosp/KernelSU-Next
           #patch -p1 --forward < 10_enable_susfs_for_ksu.patch || true
           cd ../
-          patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch || true
+          #patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch || true
 
       - name: Set Kernel Version
         run: |
