@@ -69,9 +69,9 @@ jobs:
           cp ./susfs4ksu/kernel_patches/fs/* ./kernel/aosp/fs/
           cp ./susfs4ksu/kernel_patches/include/linux/* ./kernel/aosp/include/linux/
           cd ./kernel/aosp/KernelSU-Next
-          #patch -p1 --forward < 10_enable_susfs_for_ksu.patch || true
+          patch -p1 --forward < 10_enable_susfs_for_ksu.patch || true
           cd ../
-          #patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch || true
+          patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch || true
 
       - name: Set Kernel Version
         run: |
